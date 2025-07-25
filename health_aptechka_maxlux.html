@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>HEALTH.ONE — Аптечка — HEALTH.ONE — Чистая аптечка</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+      :root {
+      --bg: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+      --card: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --highlight: #00ffd2;
+      --text-main: #f0f0f0;
+      --text-soft: #aaa;
+      --text-faint: #666;
+      --glass-blur: blur(14px);
+
+        --bg: linear-gradient(160deg, #0e0e0e 0%, #1b1b1b 100%);
+        --card: #181818;
+        --highlight: #8affc1;
+        --text-main: #f0f0f0;
+        --text-soft: #aaa;
+        --text-faint: #666;
+      }
+
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: #f0f0f0;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h1 {
+      font-weight: 600;
+      font-size: 24px;
+      color: #8affc1;
+      margin-bottom: 20px;
+    }
+
+    .item {
+      border-bottom: 1px solid #333;
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 12px 10px;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--card); box-shadow: 0 1px 4px rgba(0,0,0,0.4); border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+
+    summary:hover {
+      background-color: #222;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .name {
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    .inline {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    input[type="checkbox"] {
+      transform: scale(1.2);
+    }
+
+    input[type="number"] {
+      width: 70px;
+      background: #0c0c0c;
+      border: 1px solid #444;
+      color: #fff;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    a {
+      color: #8affc1;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .details-content {
+      border-radius: 0 0 8px 8px;
+      padding: 10px 20px 16px 20px;
+      font-size: 14px;
+      background: #141414;
+      border-left: 3px solid #8affc1;
+    }
+
+    .label {
+      color: #999;
+      font-weight: bold;
+      margin-top: 6px;
+    }
+  </style>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at top left, #111, #1a1a1a 60%);
+    color: #ffffff;
+    padding: 20px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    animation: fadeInBody 1s ease-in-out;
+    background-attachment: fixed;
+  }
+
+  @keyframes fadeInBody {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h1, h2 {
+    text-align: center;
+    margin-bottom: 1em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    animation: glowTitle 1s ease-out;
+    color: #ffffff;
+    text-shadow:
+      0 0 5px #82cfff,
+      0 0 10px #82cfff,
+      0 0 20px #42aaff;
+  }
+
+  @keyframes glowTitle {
+    0% { opacity: 0; text-shadow: none; transform: translateY(-20px); }
+    100% { opacity: 1; }
+  }
+
+  details {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    margin-bottom: 24px;
+    padding: 16px 20px;
+    box-shadow:
+      0 10px 30px rgba(0,0,0,0.7),
+      0 0 20px rgba(130, 207, 255, 0.1);
+    backdrop-filter: blur(14px);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: riseIn 0.6s ease forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  details:nth-of-type(1) { animation-delay: 0.2s; }
+  details:nth-of-type(2) { animation-delay: 0.4s; }
+  details:nth-of-type(3) { animation-delay: 0.6s; }
+  details:nth-of-type(4) { animation-delay: 0.8s; }
+
+  @keyframes riseIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  details:hover {
+    box-shadow:
+      0 15px 40px rgba(0,0,0,0.8),
+      0 0 30px rgba(130, 207, 255, 0.3);
+    transform: scale(1.015);
+    background: rgba(255,255,255,0.07);
+  }
+
+  summary {
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    color: #82cfff;
+    padding-left: 0;
+    transition: color 0.3s ease;
+  }
+
+  table {
+    width: 100%;
+    margin-top: 12px;
+    border-collapse: collapse;
+    font-size: 0.95em;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 12px rgba(255,255,255,0.05);
+  }
+
+  th, td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    text-align: left;
+  }
+
+  th {
+    color: #ccc;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: rgba(255,255,255,0.04);
+  }
+
+  td input[type="text"], td input[type="number"], td input[type="url"] {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255,255,255,0.07);
+    color: #fff;
+    outline: none;
+    font-size: 0.95em;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: inset 0 0 6px rgba(130, 207, 255, 0.15);
+  }
+
+  td input:focus {
+    background: rgba(255,255,255,0.12);
+    box-shadow:
+      0 0 10px rgba(130, 207, 255, 0.4),
+      inset 0 0 8px rgba(130, 207, 255, 0.2);
+  }
+
+  input::placeholder {
+    color: #aaa;
+  }
+
+  @media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+    th, td {
+      padding: 10px;
+    }
+    td {
+      border: none;
+      position: relative;
+    }
+    td:before {
+      content: attr(data-label);
+      font-weight: bold;
+      display: block;
+      color: #aaa;
+    }
+  }
+</style>
+</head>
+<body style='max-width: 800px; margin: auto;'>
+  <h1>💊 Постоянные добавки (чистая версия)</h1>
+
+  <details class="item">
+    <summary>
+      <div class="name">Магний (цитрат или глицинат)</div>
+      <div class="inline">
+        <input type="checkbox">
+        <input type="number" placeholder="₽">
+        <a href="https://www.ozon.ru/product/magniy-tsitrat-200mg-120-tabletok-123456787/" target="_blank">Купить</a>
+      </div>
+    </summary>
+    <div class="details-content">
+      <div><span class="label">Дозировка:</span> 200–400 мг</div>
+      <div><span class="label">Для чего:</span> Сон, мышцы, стресс</div>
+      <div><span class="label">Как принимать:</span> 1–2 капсулы вечером</div>
+      <div><span class="label">Курс:</span> Постоянно</div>
+      <div><span class="label">Противопоказания:</span> Индивидуальная непереносимость</div>
+      <div><span class="label">Моя ссылка (если дешевле):</span> 
+        <input type="text" placeholder="https://..." style="width:100%; background:#0c0c0c; border:1px solid #333; padding:6px; color:#fff; border-radius:4px;">
+      </div>
+      <div><span class="label">Комментарий:</span>
+        <input type="text" placeholder="Заметка по приёму..." style="width:100%; background:#0c0c0c; border:1px solid #333; padding:6px; color:#fff; border-radius:4px;">
+      </div>
+    </div>
+  </details>
+    
+  <details class="item">
+    <summary>
+      <div class="name">Комплекс витаминов группы B</div>
+      <div class="inline">
+        <input type="checkbox">
+        <input type="number" placeholder="₽">
+        <a href="https://www.ozon.ru/product/b-kompleks-vitaminy-now-foods-100-kapsul-123456786/" target="_blank">Купить</a>
+      </div>
+    </summary>
+    <div class="details-content">
+      <div><span class="label">Дозировка:</span> 1 капсула</div>
+      <div><span class="label">Для чего:</span> Энергия, нервы, метаболизм</div>
+      <div><span class="label">Как принимать:</span> 1 капсула утром</div>
+      <div><span class="label">Курс:</span> Постоянно</div>
+      <div><span class="label">Противопоказания:</span> Индивидуальная непереносимость</div>
+      <div><span class="label">Моя ссылка (если дешевле):</span> 
+        <input type="text" placeholder="https://..." style="width:100%; background:#0c0c0c; border:1px solid #333; padding:6px; color:#fff; border-radius:4px;">
+      </div>
+      <div><span class="label">Комментарий:</span>
+        <input type="text" placeholder="Заметка по приёму..." style="width:100%; background:#0c0c0c; border:1px solid #333; padding:6px; color:#fff; border-radius:4px;">
+      </div>
+    </div>
+  </details>
+    
+  <details class="item">
+    <summary>
+      <div class="name">Коэнзим Q10</div>
+      <div class="inline">
+        <input type="checkbox">
+        <input type="number" placeholder="₽">
+        <a href="https://www.ozon.ru/product/koenzim-q10-solgar-100mg-30-kapsul-123456785/" target="_blank">Купить</a>
+      </div>
+    </summary>
+    <div class="details-content">
+      <div><span class="label">Дозировка:</span> 100–200 мг</div>
+      <div><span class="label">Для чего:</span> Сердце, энергия, митохондрии</div>
+      <div><span class="label">Как принимать:</span> 1 капсула утром</div>
+      <div><span class="label">Курс:</span> Постоянно</div>
+      <div><span class="label">Противопоказания:</span> Индивидуальная непереносимость</div>
+      <div><span class="label">Моя ссылка (если дешевле):</span> 
+        <input type="text" placeholder="https://..." style="width:100%; background:#0c0c0c; border:1px solid #333; padding:6px; color:#fff; border-radius:4px;">
+      </div>
+      <div><span class="label">Комментарий:</span>
+        <input type="text" placeholder="Заметка по приёму..." style="width:100%; background:#0c0c0c; border:1px solid #333; padding:6px; color:#fff; border-radius:4px;">
+      </div>
+    </div>
+  </details>
+    
+  <details class="item">
+    <summary>
+      <div class="name">Цинк + Селен</div>
+      <div class="inline">
+        <input type="checkbox">
+        <input type="number" placeholder="₽">
+        <a href="https://www.ozon.ru/product/tsink-selen-evrolab-60-tabletok-123456784/" target="_blank">Купить</a>
+      </div>
+    </summary>
+    <div class="details-content">
+      <div><span class="label">Дозировка:</span> 1 таблетка</div>
+      <div><span class="label">Для чего:</span> Иммунитет, гормоны, кожа</div>
+      <div><span class="label">Как принимать:</span> 1 таблетка утром с едой</div>
+      <div><span class="label">Курс:</span> Постоянно</div>
+      <div><span class="label">Противопоказания:</span> Индивидуальная непереносимость</div>
+      <div><span class="label">Моя ссылка (если дешевле):</span> 
+        <input type="text" placeholder="https://..." style="width:100%; background:#0c0c0c; border:1px solid #333; padding:6px; color:#fff; border-radius:4px;">
+      </div>
+      <div><span class="label">Комментарий:</span>
+        <input type="text" placeholder="Заметка по приёму..." style="width:100%; background:#0c0c0c; border:1px solid #333; padding:6px; color:#fff; border-radius:4px;">
+      </div>
+    </div>
+  </details>
+    
+  <details class="item">
+    <summary>
+      <div class="name">Витамин D3 + K2</div>
+      <div class="inline">
+        <input type="checkbox">
+        <input type="number" placeholder="₽">
+        <a href="https://www.ozon.ru/product/vitamin-d3-k2-now-120-kapsul-123456783/" target="_blank">Купить</a>
+      </div>
+    </summary>
+    <div class="details-content">
+      <div><span class="label">Дозировка:</span> 2000–5000 МЕ</div>
+      <div><span class="label">Для чего:</span> Иммунитет, кости, гормоны</div>
+      <div><span class="label">Как принимать:</span> 1 капсула до обеда</div>
+      <div><span class="label">Курс:</span> Постоянно</div>
+      <div><span class="label">Противопоказания:</span> Индивидуальная непереносимость</div>
+      <div><span class="label">Моя ссылка (если дешевле):</span> 
+        <input type="text" placeholder="https://..." style="width:100%; background:#0c0c0c; border:1px solid #333; padding:6px; color:#fff; border-radius:4px;">
+      </div>
+      <div><span class="label">Комментарий:</span>
+        <input type="text" placeholder="Заметка по приёму..." style="width:100%; background:#0c0c0c; border:1px solid #333; padding:6px; color:#fff; border-radius:4px;">
+      </div>
+    </div>
+  </details>
+    
+  <details class="item">
+    <summary>
+      <div class="name">Пробиотики (например, Бак-Сет)</div>
+      <div class="inline">
+        <input type="checkbox">
+        <input type="number" placeholder="₽">
+        <a href="https://www.ozon.ru/product/probiotiki-bak-set-20-kapsul-123456779/" target="_blank">Купить</a>
+      </div>
+    </summary>
+    <div class="details-content">
+      <div><span class="label">Дозировка:</span> 1 капсула</div>
+      <div><span class="label">Для чего:</span> ЖКТ, иммунитет, настроение</div>
+      <div><span class="label">Как принимать:</span> 1 капсула утром или вечером</div>
+      <div><span class="label">Курс:</span> Постоянно</div>
+      <div><span class="label">Противопоказания:</span> Индивидуальная непереносимость</div>
+      <div><span class="label">Моя ссылка (если дешевле):</span> 
+        <input type="text" placeholder="https://..." style="width:100%; background:#0c0c0c; border:1px solid #333; padding:6px; color:#fff; border-radius:4px;">
+      </div>
+      <div><span class="label">Комментарий:</span>
+        <input type="text" placeholder="Заметка по приёму..." style="width:100%; background:#0c0c0c; border:1px solid #333; padding:6px; color:#fff; border-radius:4px;">
+      </div>
+    </div>
+  </details>
+    
+</body>
+</html>
